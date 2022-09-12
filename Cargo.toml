@@ -1,0 +1,29 @@
+[package]
+name = "freebsd-errno"
+version = "1.0.0"
+authors = ["John Millikin <john@john-millikin.com>"]
+edition = "2018"
+description = "FreeBSD error numbers"
+readme = "README.md"
+repository = "https://github.com/jmillikin/rust-freebsd-errno"
+license = "0BSD"
+
+categories = [
+	"no-std",
+	"os::freebsd-apis",
+]
+
+include = [
+	"/LICENSE.txt",
+	"/freebsd-errno/freebsd-errno.rs",
+]
+
+[dependencies]
+posix-errno = { version = "1.0.1", optional = true }
+
+[features]
+default = ["posix-traits"]
+posix-traits = ["dep:posix-errno"]
+
+[lib]
+path = "freebsd-errno/freebsd-errno.rs"
